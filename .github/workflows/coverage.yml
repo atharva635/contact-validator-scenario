@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
       - name: Run tests with coverage
-        run: python -m pytest --cov=src --cov-report=term-missing --cov-report=markdown:coverage.md --cov-fail-under=85
+        run: python -m pytest --cov=src --cov-report=term-missing --cov-fail-under=85
       - name: Add coverage to step summary
         if: always()
-        run: cat coverage.md >> "$GITHUB_STEP_SUMMARY"
+        run: python -m coverage report >> "$GITHUB_STEP_SUMMARY"
